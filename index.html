@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Network Anomaly Detection</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h2>NET<span>GUARD</span></h2>
+                <p>Network Security System</p>
+            </div>
+
+            <div class="menu">
+                <p class="menu-title">MAIN MENU</p>
+
+                <a href="#overview" class="active">Dashboard</a>
+                <a href="#analysis">Traffic Analysis</a>
+                <a href="#results">Detection Logs</a>
+
+                <p class="menu-title">SYSTEM</p>
+
+                <a href="#system">System Status</a>
+                <a href="#about">About Project</a>
+            </div>
+
+            <div class="sidebar-footer">
+                <span class="status-dot"></span>
+                System Ready
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Top Header -->
+            <header class="topbar">
+
+                <div>
+                    <h2>Security Dashboard</h2>
+                    <p>Monitor and analyze network traffic activity</p>
+                </div>
+
+                <div class="system-status">
+                    <span class="status-dot"></span>
+                    System Online
+                </div>
+
+            </header>
+
+
+            <!-- Overview -->
+            <section id="overview">
+
+                <div class="section-heading">
+                    <h2>Network Overview</h2>
+                    <p>Real-time traffic monitoring statistics</p>
+                </div>
+
+                <div class="stats-container">
+
+                    <div class="stat-card blue">
+                        <p>Total Records</p>
+                        <h2 id="totalRecords">0</h2>
+                        <span>Traffic analyzed</span>
+                    </div>
+
+                    <div class="stat-card green">
+                        <p>Normal Traffic</p>
+                        <h2 id="normalRecords">0</h2>
+                        <span>Safe network activity</span>
+                    </div>
+
+                    <div class="stat-card red">
+                        <p>Anomalous Traffic</p>
+                        <h2 id="anomalyRecords">0</h2>
+                        <span>Suspicious activity</span>
+                    </div>
+
+                    <div class="stat-card purple">
+                        <p>Anomaly Rate</p>
+                        <h2 id="detectionRate">0%</h2>
+                        <span>Anomalies detected</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Upload Dataset -->
+            <section id="analysis" class="panel">
+
+                <div class="section-heading">
+                    <h2>Traffic Analysis</h2>
+                    <p>Upload a network traffic dataset for analysis</p>
+                </div>
+
+                <div class="upload-box">
+
+                    <div class="upload-icon">↑</div>
+
+                    <h3>Upload Network Dataset</h3>
+
+                    <p>Select a CSV file containing network traffic records</p>
+
+                    <input type="file" id="datasetFile" accept=".csv">
+
+                    <button id="analyzeBtn">Analyze Traffic</button>
+
+                    <p id="uploadStatus">Supported format: CSV</p>
+
+                </div>
+
+            </section>
+
+
+            <!-- Analytics -->
+            <section class="analytics">
+
+                <div class="panel chart-panel">
+    <h3>Traffic Classification</h3>
+    <p>Normal vs Anomalous traffic records</p>
+
+    <div class="chart-container">
+        <canvas id="trafficBarChart"></canvas>
+    </div>
+</div>
+
+<div class="panel chart-panel">
+    <h3>Traffic Distribution</h3>
+    <p>Percentage of detected traffic categories</p>
+
+    <div class="chart-container">
+        <canvas id="trafficPieChart"></canvas>
+    </div>
+</div>
+
+            </section>
+
+
+            <!-- Detection Results -->
+            <section id="results" class="panel">
+
+                <div class="section-heading">
+                    <h2>Detection Results</h2>
+                    <p>Network traffic classification records</p>
+                </div>
+
+
+                <!-- Search and Filter -->
+
+                <p id="recordCount" class="record-count">
+    Showing 0 records
+</p>
+<div class="table-controls">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by Record ID..."
+    >
+
+    <select id="filterSelect">
+        <option value="all">All Records</option>
+        <option value="normal">Normal Only</option>
+        <option value="anomaly">Anomaly Only</option>
+    </select>
+
+</div>
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Record ID</th>
+                                <th>Prediction</th>
+                                <th>Anomaly Score</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="resultsTable">
+
+                            <tr>
+                                <td>FLOW_001</td>
+                                <td><span class="normal">Normal</span></td>
+                                <td>0.12</td>
+                            </tr>
+
+                            <tr>
+                                <td>FLOW_002</td>
+                                <td><span class="anomaly">Anomaly</span></td>
+                                <td>0.91</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+<!-- SYSTEM STATUS -->
+<section id="system" class="panel">
+
+    <div class="section-heading">
+        <h2>System Status</h2>
+        <p>Current dashboard component status</p>
+    </div>
+
+    <div class="system-grid">
+
+        <div class="system-card">
+            <span class="status-dot"></span>
+            <h3>Frontend</h3>
+            <p>Operational</p>
+        </div>
+
+        <div class="system-card">
+            <span class="status-dot"></span>
+            <h3>CSV Processing</h3>
+            <p>Ready</p>
+        </div>
+
+        <div class="system-card">
+            <span class="status-dot"></span>
+            <h3>Charts</h3>
+            <p>Operational</p>
+        </div>
+
+    </div>
+
+</section>
+
+            <!-- ABOUT PROJECT -->
+<section id="about" class="panel">
+
+    <div class="section-heading">
+        <h2>About Project</h2>
+        <p>AI-Based Anomaly Detection in Network Traffic</p>
+    </div>
+
+    <div class="about-content">
+
+        <h3>Project Overview</h3>
+
+        <p>
+            This project aims to identify unusual or suspicious
+            activities in network traffic using Artificial
+            Intelligence and Machine Learning techniques.
+            It helps monitor network behaviour and detect
+            potential security threats.
+        </p>
+
+        <h3>Technologies Used</h3>
+
+        <div class="tech-list">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Chart.js</span>
+            <span>Python</span>
+            <span>Machine Learning</span>
+        </div>
+
+        <h3>Frontend Responsibilities</h3>
+
+        <p>
+            Dashboard development, CSV upload, traffic
+            visualization, detection results, and future
+            backend API integration.
+        </p>
+
+    </div>
+
+</section>
+
+<footer>
+    NETGUARD | Minor Project
+</footer>
+
+        </main>
+
+    </div>
+    
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
